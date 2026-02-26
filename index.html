@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Peddy</title>
+    <style>
+        .lato-font {
+            font-family: "Lato", sans-serif;
+        }
+
+        button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body class="lato-font">
+    <header>
+        <nav class="max-w-[1320px] mx-auto flex justify-between items-center py-10 md:py-15">
+            <div id="logo" class="flex gap-2 items-center">
+                <img class="h-[24px]" src="./images/logo.webp" alt="">
+                <h3 class="font-black text-3xl">Peddy</h3>
+            </div>
+            <div>
+                <ul class="hidden md:flex gap-8 text-[#131313] text-xl">
+                    <a href="">
+                        <li>Home</li>
+                    </a>
+                    <a href="">
+                        <li>Shop</li>
+                    </a>
+                    <a href="">
+                        <li>Contact</li>
+                    </a>
+                </ul>
+            </div>
+            <div>
+                <button class="p-4 rounded-full border border-gray-200"><img class="w-6 h-6" src="/images/user.png"
+                        alt=""></button>
+            </div>
+        </nav>
+        <section class="text-center flex flex-col items-center mb-12 md:mb-[100px]">
+            <h4 class="text-2xl font-bold text-gray-600 mb-4">Bringing Families Together ❤️‍🔥</h4>
+            <h1 class="max-w-[752px] mx-auto font-black text-7xl mb-6">Your Path to Adoption Starts Here</h1>
+            <p class="max-w-[752px] mx-auto text-gray-700 mb-8">It is a long established fact that a reader will be
+                distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum
+                is that it has a.</p>
+            <button class="text-xl font-bold py-4 px-8 rounded-xl bg-[#0E7A81] text-white">View More</button>
+
+            <img class="mt-12" src="/images/pet.webp" alt="">
+        </section>
+    </header>
+    <main class="max-w-[1320px] mx-auto">
+        <!-- Title and text -->
+        <div class="text-center mb-12">
+            <h2 class="font-black text-4xl text-[#131313] mb-6">Adopt Your Best Friend</h2>
+            <p class="max-w-[636px] mx-auto text-gray-700">It is a long established fact that a reader will be
+                distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum
+                is that it has a.</p>
+        </div>
+
+        <!-- buttons -->
+        <div id="btn-container" class="mb-8 grid grid-cols-2 md:grid-cols-4 gap-6"></div>
+
+        <!-- sort button -->
+        <div class="mb-8 flex justify-between items-center">
+            <h4 class="font-black text-2xl text-[#131313]">Best Deal For You</h4>
+            <button class="text-xl font-bold py-4 px-8 rounded-xl bg-[#0E7A81] text-white">Sort by price</button>
+        </div>
+
+        <!-- card container -->
+        <section class="grid lg:grid-cols-4">
+            <!-- pet cards -->
+            <div class="col-span-3">
+                <div id="pet-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                </div>
+            </div>
+
+            <!-- liked list -->
+            <div class="col-span-1"></div>
+        </section>
+    </main>
+    <footer></footer>
+    <script src="/index.js"></script>
+</body>
+
+</html>
