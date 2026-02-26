@@ -26,7 +26,7 @@
 </head>
 
 <body class="lato-font">
-    <header>
+    <header id="header" class="px-4 lg:px-0">
         <nav class="max-w-[1320px] mx-auto flex justify-between items-center py-10 md:py-15">
             <div id="logo" class="flex gap-2 items-center">
                 <img class="h-[24px]" src="./images/logo.webp" alt="">
@@ -34,13 +34,13 @@
             </div>
             <div>
                 <ul class="hidden md:flex gap-8 text-[#131313] text-xl">
-                    <a href="">
+                    <a href="#header">
                         <li>Home</li>
                     </a>
-                    <a href="">
+                    <a href="#main">
                         <li>Shop</li>
                     </a>
-                    <a href="">
+                    <a href="#footer">
                         <li>Contact</li>
                     </a>
                 </ul>
@@ -56,12 +56,14 @@
             <p class="max-w-[752px] mx-auto text-gray-700 mb-8">It is a long established fact that a reader will be
                 distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum
                 is that it has a.</p>
-            <button class="text-xl font-bold py-4 px-8 rounded-xl bg-[#0E7A81] text-white">View More</button>
+            <a href="#main">
+                <button class="text-xl font-bold py-4 px-8 rounded-xl bg-[#0E7A81] text-white">View More</button>
+            </a>
 
             <img class="mt-12" src="/images/pet.webp" alt="">
         </section>
     </header>
-    <main class="max-w-[1320px] mx-auto">
+    <main id="main" class="max-w-[1320px] mx-auto px-4 lg:px-0">
         <!-- Title and text -->
         <div class="text-center mb-12">
             <h2 class="font-black text-4xl text-[#131313] mb-6">Adopt Your Best Friend</h2>
@@ -80,19 +82,58 @@
         </div>
 
         <!-- card container -->
-        <section class="grid lg:grid-cols-4">
+        <section class="grid md:grid-cols-4 gap-6 mb-[100px]">
             <!-- pet cards -->
-            <div class="col-span-3">
+            <div class="md:col-span-3">
                 <div id="pet-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
                 </div>
             </div>
 
             <!-- liked list -->
-            <div class="col-span-1"></div>
+            <div class="col-span-1 p-5 rounded-xl border border-gray-200"></div>
         </section>
     </main>
-    <footer></footer>
+
+    <footer id="footer" class=" bg-[#131313] px-4 lg:px-0">
+
+        <div class="grid md:grid-cols-4 max-w-[1320px] mx-auto py-[100px] gap-12 md:gap-0 text-center md:text-left">
+
+            <div class="md:col-span-2 flex flex-col items-center md:items-start">
+                <div class="mb-6 flex gap-4">
+                    <img src="./images/logo.webp" alt="">
+                    <span class="text-white font-black text-3xl">Peddy</span>
+                </div>
+
+                <p class="text-gray-300 mb-2">Location: av. Washington 165, NY CA 54003</p>
+                <p class="text-gray-300 mb-2">Phone: +31 85 964 47 25</p>
+                <p class="text-gray-300 mb-2">Email: info@yourdomain.com</p>
+                <p class="text-gray-300 mb-6">Openings hours: 9.00 AM - 5.00 PM</p>
+                <div class="flex gap-4 text-[#0E7A81] text-2xl">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-square-linkedin"></i>
+                    <i class="fa-brands fa-x-twitter"></i>
+                    <i class="fa-brands fa-square-instagram"></i>
+                </div>
+            </div>
+
+            <div>
+                <h5 class="mb-8 font-bold text-lg text-white">Useful Links</h5>
+                <p class="text-gray-300 mb-2">Home</p>
+                <p class="text-gray-300 mb-2">About Us</p>
+                <p class="text-gray-300 mb-2">Animals</p>
+                <p class="text-gray-300 mb-2">Foundation</p>
+                <p class="text-gray-300">contact</p>
+            </div>
+
+            <div class="flex flex-col">
+                <h5 class="mb-8 font-bold text-lg text-white">Drop a Message</h5>
+                <input id="email" type="email" placeholder="Enter your email" autocomplete="off"
+                    class="bg-gray-700 text-white p-4 rounded-xl mb-4">
+                <button class="text-xl font-bold py-4 px-8 rounded-xl bg-[#0E7A81] text-white">Subscribe</button>
+            </div>
+        </div>
+    </footer>
     <script src="/index.js"></script>
 </body>
 

@@ -32,13 +32,13 @@ const showAllPets = (pets) =>{
     pets.forEach(pet => {
         console.log(pet)
         const petCard = document.createElement('div')
-        petCard.className = 'p-5 rounded-lg border border-gray-200'
+        petCard.className = 'p-5 rounded-xl border border-gray-200'
         petCard.innerHTML = `
             <div>
                 <img class="w-full h-[160px] object-cover rounded-lg" src="${pet.image}" />
             </div>
             <div class="mt-6">
-                <h4 class="text-xl text-[#131313] font-bold">${pet.pet_name}</h4>
+                <h4 class="text-xl text-[#131313] font-bold mb-2">${pet.pet_name}</h4>
                 <p class="text-gray-600"><i class="fa-solid fa-cubes-stacked text-sm"></i></i>  Breed: ${pet.breed ? pet.breed: "Not available"}</p>
                 <p class="text-gray-600"><i class="fa-regular fa-calendar text-sm"></i>  Birth: ${pet.date_of_birth}</p>
                 <p class="text-gray-600"><i class="fa-solid fa-mercury text-sm"></i>  Gender: ${pet.gender}</p>
@@ -46,9 +46,9 @@ const showAllPets = (pets) =>{
             </div>
             <hr class="my-4 border-[#e5e7eb]">
             <div class="flex gap-4">
-                <button class="border border-gray-300 py-2 px-5 rounded-lg"><i class="fa-regular fa-heart text-[#0e7a81]"></i></button>
-                <button class="border border-gray-300 py-2 px-5 rounded-lg font-bold text-[#0e7a81]">Adopt</button>
-                <button class="border border-gray-300 py-2 px-5 rounded-lg font-bold text-[#0e7a81]">Details</button>
+                <button class="flex-1 border border-gray-300 p-2 rounded-lg text-[#0e7a81] hover:bg-[#0e7a81] hover:text-white"><i class="fa-regular fa-heart"></i></button>
+                <button class="flex-1 border border-gray-300 p-2 rounded-lg font-bold text-[#0e7a81] hover:bg-[#0e7a81] hover:text-white">Adopt</button>
+                <button class="flex-1 border border-gray-300 p-2 rounded-lg font-bold text-[#0e7a81] hover:bg-[#0e7a81] hover:text-white">Details</button>
             </div>
         `
         petContainer.appendChild(petCard)
