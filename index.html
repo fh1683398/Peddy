@@ -22,6 +22,58 @@
         button {
             cursor: pointer;
         }
+        .active{
+            background-color: rgba(14, 122, 129, 0.1);
+            border: 1.5px solid #0E7A81;
+        }
+        
+        .modal{
+            background-color: rgba(206, 206, 206, 0.3);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            inset: 0;
+            z-index: 999;
+            position: fixed;
+        }
+        .none{
+            display: none;
+        }
+        /* HTML: <div class="loader"></div> */
+        #loader {
+            width: 50px;
+            aspect-ratio: 1;
+            display: grid;
+        }
+
+        #loader::before,
+        #loader::after {
+            content: "";
+            grid-area: 1/1;
+            --c: no-repeat radial-gradient(farthest-side, #0E7A81 92%, #0000);
+            background:
+                var(--c) 50% 0,
+                var(--c) 50% 100%,
+                var(--c) 100% 50%,
+                var(--c) 0 50%;
+            background-size: 12px 12px;
+            animation: l12 1s infinite;
+        }
+
+        #loader::before {
+            margin: 4px;
+            filter: hue-rotate(45deg);
+            background-size: 8px 8px;
+            animation-timing-function: linear
+        }
+
+        @keyframes l12 {
+            100% {
+                transform: rotate(.5turn)
+            }
+        }
     </style>
 </head>
 
@@ -63,6 +115,7 @@
             <img class="mt-12" src="/images/pet.webp" alt="">
         </section>
     </header>
+
     <main id="main" class="max-w-[1320px] mx-auto px-4 lg:px-0">
         <!-- Title and text -->
         <div class="text-center mb-12">
@@ -81,6 +134,11 @@
             <button class="text-xl font-bold py-4 px-8 rounded-xl bg-[#0E7A81] text-white">Sort by price</button>
         </div>
 
+        <!-- loader -->
+        <div class="flex w-full items-center justify-center hidden">
+            <div id="loader"></div>
+        </div>
+        
         <!-- card container -->
         <section class="grid md:grid-cols-4 gap-6 mb-[100px]">
             <!-- pet cards -->
@@ -93,6 +151,21 @@
             <!-- liked list -->
             <div class="col-span-1 p-5 rounded-xl border border-gray-200"></div>
         </section>
+
+        <!-- Details modal -->
+         <div id="detailsModal" class="modal none">
+            
+         </div>
+
+        <!--Adopt modal -->
+         <div id="adoptModal" class="modal none">
+            <div class="px-20 py-12 flex flex-col items-center bg-white rounded-xl min-w-[420px]">
+                <img class="mb-2 w-24" src="/images/achievement.png" alt="">
+                <h3 class="font-bold text-3xl mb-2">Congratulations!</h3>
+                <p class="text-gray-700 mb-3">Your adoption will be done in</p>
+                <span class="font-bold text-3xl" id="countdown">0</span>
+            </div>
+         </div>
     </main>
 
     <footer id="footer" class=" bg-[#131313] px-4 lg:px-0">
