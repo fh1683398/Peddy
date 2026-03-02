@@ -5,16 +5,23 @@ const loadCategories = () => {
         .then(data => showCategories(data.categories))
         .catch(error => console.log(error))
 }
+
 //Show Categories (buttons)
 const showCategories = (buttons) => {
     const btnContainer = document.getElementById('btn-container')
     buttons.forEach(button => {
         const categoryBtn = document.createElement('button')
-        categoryBtn.className = 'p-6 rounded-2xl border border-gray-300 flex justify-center items-center gap-4'
+        categoryBtn.className = 'p-6 rounded-2xl border border-gray-300 flex justify-center items-center gap-4 caterogyBtn'
         categoryBtn.innerHTML = `
-            <img src="${button.category_icon}" />
-            <span class="font-bold text-2xl text-[#131313]">${button.category}</span>
+            <img class="w-10" src="${button.category_icon}" />
+            <span class="font-bold text-xl md:text-2xl text-[#131313]">${button.category}</span>
         `
+        categoryBtn.id = `${button.category}`
+        categoryBtn.onclick = () => {
+
+            handleActiveBtn(button.category)
+            loadCategoryPets(button.category)
+        }
         btnContainer.append(categoryBtn)
     })
 }
@@ -23,13 +30,25 @@ const showCategories = (buttons) => {
 const loadPets = () => {
     fetch('https://openapi.programming-hero.com/api/peddy/pets')
         .then(res => res.json())
-        .then(data => showAllPets(data.pets))
+        .then(data => showPets(data.pets))
         .catch(error => console.log(error))
 }
 
 //Show All Pets
-const showAllPets = (pets) => {
+const showPets = (pets) => {
     const petContainer = document.getElementById('pet-container')
+    petContainer.innerHTML = ""
+
+    if(pets.length === 0){
+        petContainer.classList.remove('grid')
+        petContainer.innerHTML =  `
+            <div class="flex justify-center items-center h-[400px] w-full p-5 rounded-xl border border-gray-200">
+                <h2 class="font-bold text-3xl text-red-600">No Data Found</h2>
+            </div>
+        `
+    }else{
+        petContainer.classList.add('grid')
+    }
     pets.forEach(pet => {
         const petCard = document.createElement('div')
         petCard.className = 'p-5 rounded-xl border border-gray-200'
@@ -40,14 +59,14 @@ const showAllPets = (pets) => {
             <div class="mt-6">
                 <h4 class="text-xl text-[#131313] font-bold mb-2">${pet.pet_name}</h4>
                 <p class="text-gray-600"><i class="fa-solid fa-cubes-stacked text-sm"></i>  Breed:  ${pet.breed ? pet.breed : "Not available"}</p>
-                <p class="text-gray-600"><i class="fa-regular fa-calendar text-sm"></i>  Birth:  ${pet.date_of_birth}</p>
-                <p class="text-gray-600"><i class="fa-solid fa-mercury text-sm"></i>  Gender:  ${pet.gender}</p>
-                <p class="text-gray-600"><i class="fa-solid fa-dollar-sign text-sm"></i>  Price: $${pet.price}</p>
+                <p class="text-gray-600"><i class="fa-regular fa-calendar text-sm"></i>  Birth:  ${pet.date_of_birth? pet.date_of_birth : "Not available"}</p>
+                <p class="text-gray-600"><i class="fa-solid fa-mercury text-sm"></i>  Gender:  ${pet.gender? pet.gender : 'Not available'}</p>
+                <p class="text-gray-600"><i class="fa-solid fa-dollar-sign text-sm"></i>  Price: ${pet.price ? pet.price : "Not available"}</p>
             </div>
             <hr class="my-4 border-[#e5e7eb]">
             <div class="flex gap-4">
 
-                <button class="flex-1 border border-gray-300 p-2 rounded-lg text-[#0e7a81] hover:bg-[#0e7a81] hover:text-white"><i class="fa-regular fa-heart"></i></button>
+                <button onclick="loadLikedPet(${pet.petId})" class="flex-1 border border-gray-300 p-2 rounded-lg text-[#0e7a81] hover:bg-[#0e7a81] hover:text-white"><i class="fa-regular fa-heart"></i></button>
 
                 <button onclick="adoptPet(${pet.petId}, this)" class="flex-1 border border-gray-300 p-2 rounded-lg font-bold text-[#0e7a81] hover:bg-[#0e7a81] hover:text-white">Adopt</button>
 
@@ -64,6 +83,7 @@ const petDetails = (id) => {
         .then(res => res.json())
         .then(data => showPetDetails(data.petData))
 }
+
 //Show Pet Details
 const showPetDetails = (data) => {
     const detailsModal = document.getElementById('detailsModal')
@@ -96,6 +116,7 @@ const showPetDetails = (data) => {
     detailsModal.innerHTML = ""
     detailsModal.append(card)
 }
+
 //Load Adopt button
 const adoptPet = (id, button) => {
     const adoptModal = document.getElementById('adoptModal')
@@ -122,6 +143,16 @@ const adoptPet = (id, button) => {
     button.disabled = true;
 }
 
+//Load category Pets
+const loadCategoryPets = (id) => {
+    fetch(`https://openapi.programming-hero.com/api/peddy/category/${id}`)
+    .then(res => res.json())
+    .then(data => {
+        showPets(data.data)
+        // console.log(data.data)
+    })
+    .catch(error => console.log(error))
+}
 
 
 
@@ -137,5 +168,33 @@ detailsModal.addEventListener('click', (e) => {
     }
 })
 
+//Active button function
+const handleActiveBtn = (id) => {
+    const categoryButtons = document.getElementsByClassName('caterogyBtn')
+    for(let button of categoryButtons){
+        button.classList.remove('active')
+    }
+    document.getElementById(id).classList.add('active')
+}
+
+//Handle Liked pet
+const loadLikedPet = (id) => {
+    fetch(`https://openapi.programming-hero.com/api/peddy/pet/${id}`)
+    .then(res => res.json())
+    .then(data => showLikedPet(data.petData.image))
+}
+
+//show liked pet
+const showLikedPet = (image) => {
+    const likedPet =document.getElementById('likedPet')
+    const imageDiv =  document.createElement('div')
+    // imageDiv.classList.add('h-[124px')
+    imageDiv.innerHTML = `
+        <img class="object-cover h-full w-full rounded-lg" src="${image}" />
+    `
+    likedPet.append(imageDiv)
+}
+
 loadCategories()
 loadPets()
+loadCategoryPets()

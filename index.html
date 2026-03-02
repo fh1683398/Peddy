@@ -85,15 +85,15 @@
                 <h3 class="font-black text-3xl">Peddy</h3>
             </div>
             <div>
-                <ul class="hidden md:flex gap-8 text-[#131313] text-xl">
+                <ul class="hidden md:flex text-[#131313] text-xl">
                     <a href="#header">
-                        <li>Home</li>
+                        <li class="hover:bg-gray-100 px-4 py-2 rounded-lg">Home</li>
                     </a>
                     <a href="#main">
-                        <li>Shop</li>
+                        <li class="hover:bg-gray-100 px-4 py-2 rounded-lg">Shop</li>
                     </a>
                     <a href="#footer">
-                        <li>Contact</li>
+                        <li class="hover:bg-gray-100 px-4 py-2 rounded-lg">Contact</li>
                     </a>
                 </ul>
             </div>
@@ -149,7 +149,9 @@
             </div>
 
             <!-- liked list -->
-            <div class="col-span-1 p-5 rounded-xl border border-gray-200"></div>
+            <div class="col-span-1 p-5 rounded-xl border border-gray-200">
+                <div id="likedPet" class="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-5"></div>
+            </div>
         </section>
 
         <!-- Details modal -->
@@ -183,20 +185,20 @@
                 <p class="text-gray-300 mb-2">Email: info@yourdomain.com</p>
                 <p class="text-gray-300 mb-6">Openings hours: 9.00 AM - 5.00 PM</p>
                 <div class="flex gap-4 text-[#0E7A81] text-2xl">
-                    <i class="fa-brands fa-facebook"></i>
-                    <i class="fa-brands fa-square-linkedin"></i>
-                    <i class="fa-brands fa-x-twitter"></i>
-                    <i class="fa-brands fa-square-instagram"></i>
+                    <i class="fa-brands fa-facebook cursor-pointer"></i>
+                    <i class="fa-brands fa-square-linkedin cursor-pointer"></i>
+                    <i class="fa-brands fa-x-twitter cursor-pointer"></i>
+                    <i class="fa-brands fa-square-instagram cursor-pointer"></i>
                 </div>
             </div>
 
             <div>
                 <h5 class="mb-8 font-bold text-lg text-white">Useful Links</h5>
-                <p class="text-gray-300 mb-2">Home</p>
-                <p class="text-gray-300 mb-2">About Us</p>
-                <p class="text-gray-300 mb-2">Animals</p>
-                <p class="text-gray-300 mb-2">Foundation</p>
-                <p class="text-gray-300">contact</p>
+                <p class="text-gray-300 mb-2 cursor-pointer">Home</p>
+                <p class="text-gray-300 mb-2 cursor-pointer">About Us</p>
+                <p class="text-gray-300 mb-2 cursor-pointer">Animals</p>
+                <p class="text-gray-300 mb-2 cursor-pointer">Foundation</p>
+                <p class="text-gray-300 cursor-pointer">contact</p>
             </div>
 
             <div class="flex flex-col">
